@@ -1,10 +1,10 @@
-package metel.salem.api.intro.controller;
+package metel.salem.api.user.controller;
 
 import lombok.RequiredArgsConstructor;
 import metel.salem.api.base.ApiResponse;
 import metel.salem.api.base.ResponseDto;
 import metel.salem.api.dto.AdminUserDto;
-import metel.salem.api.intro.service.AdminUserService;
+import metel.salem.api.user.service.AdminUserService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

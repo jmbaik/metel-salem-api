@@ -3,7 +3,7 @@ package metel.salem.api.intro.service;
 import lombok.RequiredArgsConstructor;
 import metel.salem.api.dto.AreaCodeDto;
 import metel.salem.api.dto.IntroDto;
-import metel.salem.api.mapper.IntroMapper;
+import metel.salem.api.intro.mapper.IntroMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;

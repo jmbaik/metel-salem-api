@@ -1,4 +1,4 @@
-package metel.salem.api.mapper;
+package metel.salem.api.intro.mapper;
 
 import metel.salem.api.dto.AreaCodeDto;
 import metel.salem.api.dto.IntroDto;

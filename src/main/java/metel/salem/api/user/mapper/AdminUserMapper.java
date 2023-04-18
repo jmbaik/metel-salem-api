@@ -1,4 +1,4 @@
-package metel.salem.api.mapper;
+package metel.salem.api.user.mapper;
 
 import metel.salem.api.dto.AdminUserDto;
 import org.apache.ibatis.annotations.Mapper;
