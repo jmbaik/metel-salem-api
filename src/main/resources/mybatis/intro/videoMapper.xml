@@ -2,17 +2,20 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="metel.salem.api.video.mapper.VideoMapper">
     <select id="selectVideoList" resultType="metel.salem.api.dto.VideoDto" parameterType="hashmap">
-        SELECT c_code as cCode, vid, cat, title, refer, speaker, thumnail, vdo_url as vdoUrl,
-            regdate as regDate, regid as regId, upddate as updDate, updid as updId
-        FROM salem.video where 1=1
-        AND c_code = #{cCode}
+        SELECT a.c_code as cCode, a.vid, a.cat, a.title, a.refer, a.speaker, a.thumnail, a.vdo_url as vdoUrl,
+        a.regdate as regDate, a.regid as regId, a.upddate as updDate, a.updid as updId,
+        (select name from church_code where a.c_code=c_code ) as cName
+        FROM salem.video a where 1=1
+        <if test='cCode != null and cCode != ""'>
+            AND c_code = #{cCode}
+        </if>
         <if test='cat != null and cat != ""'>
-            and cat = #{cat}
+            and a.cat = #{cat}
         </if>
         <if test='title != null and title != ""'>
-            and title like concat('%', #{title}, '%')
+            and a.title like concat('%', #{title}, '%')
         </if>
-        order by cCode, vid desc
+        order by a.c_code, a.vid desc
     </select>
 
     <update id="saveVideoClip" parameterType="metel.salem.api.dto.VideoDto">

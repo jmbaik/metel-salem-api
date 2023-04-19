@@ -5,6 +5,7 @@ import lombok.Data;
 @Data
 public class VideoDto {
     private String cCode;
+    private String cName;
     private String vid;
     private String cat;
     private String title;

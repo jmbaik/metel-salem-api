@@ -31,8 +31,8 @@ public class VideoController {
     }
     @ResponseBody
     @GetMapping("/default")
-    public ResponseDto<List<VideoDto>> getVideoClips(@RequestParam(value="cCode") String cCode,
-                                                     @RequestParam(value="cat") String cat){
+    public ResponseDto<List<VideoDto>> getVideoClips(@RequestParam(required = false) String cCode,
+                                                     @RequestParam(required = false) String cat){
         HashMap<String, Object> params = new HashMap<>();
         params.put("cCode", cCode);
         params.put("cat", cat);
