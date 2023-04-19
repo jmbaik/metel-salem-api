@@ -18,7 +18,7 @@
     <update id="saveVideoClip" parameterType="metel.salem.api.dto.VideoDto">
         INSERT INTO salem.video
             (c_code, vid, cat, title, refer, speaker, thumnail, vdo_url, regdate, regid, upddate, updid)
-        VALUES( #{cCode}, salem.video_seq.nextval, #{cat}, #{title}, #{refer},
+        VALUES( #{cCode}, nextval(salem.video_seq), #{cat}, #{title}, #{refer},
             #{speaker}, #{thumnail}, #{vdoUrl}, now(), #{regId}, now(), #{updId})
         ON DUPLICATE KEY UPDATE
         cat=#{cat},
