@@ -18,6 +18,9 @@ public class VideoService {
         return mapper.selectVideoList(params);
     }
 
+    public int getSeqVideo(){
+        return mapper.getSeqVideo();
+    }
     public int saveVideoClip(VideoDto videoDto){
         return mapper.saveVideoClip(videoDto);
     }

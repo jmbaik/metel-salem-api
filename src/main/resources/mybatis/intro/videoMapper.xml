@@ -18,6 +18,10 @@
         order by a.c_code, a.vid desc
     </select>
 
+    <select id="getSeqVideo" resultType="int">
+        select nextval(salem.video_seq)
+    </select>
+
     <update id="saveVideoClip" parameterType="metel.salem.api.dto.VideoDto">
         INSERT INTO salem.video
             (c_code, vid, cat, title, refer, speaker, thumnail, vdo_url, regdate, regid, upddate, updid)

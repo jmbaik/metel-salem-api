@@ -40,4 +40,12 @@ public class VideoController {
         return ApiResponse.Success(list);
     }
 
+    @ResponseBody
+    @GetMapping("/seq-video")
+    public ResponseDto<Integer> getVideoClips(){
+        Integer result = service.getSeqVideo();
+        return ApiResponse.Success(result);
+    }
+
+
 }

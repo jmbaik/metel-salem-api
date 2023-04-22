@@ -12,5 +12,7 @@ public interface VideoMapper {
 
     int saveVideoClip(VideoDto videoDto);
 
+    int getSeqVideo();
+
     int deleteVideoClip(VideoDto videoDto);
 }
