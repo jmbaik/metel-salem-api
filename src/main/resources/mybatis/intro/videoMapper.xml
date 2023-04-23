@@ -2,12 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="metel.salem.api.video.mapper.VideoMapper">
     <select id="selectVideoList" resultType="metel.salem.api.dto.VideoDto" parameterType="hashmap">
-        SELECT a.c_code as cCode, a.vid, a.cat, a.title, a.refer, a.speaker, a.thumnail, a.vdo_url as vdoUrl,
+        SELECT a.c_code as churchCode, a.vid, a.cat, a.title, a.refer, a.speaker, a.thumnail, a.vdo_url as vdoUrl,
         a.regdate as regDate, a.regid as regId, a.upddate as updDate, a.updid as updId,
-        (select name from church_code where a.c_code=c_code ) as cName
+        (select name from church_code where a.c_code=c_code ) as churchName
         FROM salem.video a where 1=1
-        <if test='cCode != null and cCode != ""'>
-            AND c_code = #{cCode}
+        <if test='churchCode != null and churchCode != ""'>
+            AND c_code = #{churchCode}
         </if>
         <if test='cat != null and cat != ""'>
             and a.cat = #{cat}
@@ -25,7 +25,7 @@
     <update id="saveVideoClip" parameterType="metel.salem.api.dto.VideoDto">
         INSERT INTO salem.video
             (c_code, vid, cat, title, refer, speaker, thumnail, vdo_url, regdate, regid, upddate, updid)
-        VALUES( #{cCode}, nextval(salem.video_seq), #{cat}, #{title}, #{refer},
+        VALUES( #{churchCode}, #{vid}, #{cat}, #{title}, #{refer},
             #{speaker}, #{thumnail}, #{vdoUrl}, now(), #{regId}, now(), #{updId})
         ON DUPLICATE KEY UPDATE
         cat=#{cat},
@@ -39,7 +39,7 @@
     </update>
 
     <delete id="deleteVideoClip" parameterType="metel.salem.api.dto.VideoDto">
-        delete from salem.video where c_code=#{cCode} and vid = #{vid}
+        delete from salem.video where c_code=#{churchCode} and vid = #{vid}
     </delete>
 
 </mapper>
