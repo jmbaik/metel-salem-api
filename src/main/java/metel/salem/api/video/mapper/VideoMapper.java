@@ -10,7 +10,9 @@ import java.util.List;
 public interface VideoMapper {
     List<VideoDto> selectVideoList(HashMap<String, Object> params);
 
-    int saveVideoClip(VideoDto videoDto);
+    int insertVideoClip(VideoDto videoDto);
+
+    int updateVideoClip(VideoDto videoDto);
 
     int getSeqVideo();
 

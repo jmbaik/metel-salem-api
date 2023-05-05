@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import metel.salem.api.dto.VideoDto;
 import metel.salem.api.video.mapper.VideoMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.HashMap;
 import java.util.List;
@@ -22,7 +23,11 @@ public class VideoService {
         return mapper.getSeqVideo();
     }
     public int saveVideoClip(VideoDto videoDto){
-        return mapper.saveVideoClip(videoDto);
+        if(StringUtils.isEmpty(videoDto.getVid())){
+            return mapper.insertVideoClip(videoDto);
+        } else {
+            return mapper.updateVideoClip(videoDto);
+        }
     }
     public int deleteVideoClip(VideoDto videoDto){
         return mapper.deleteVideoClip(videoDto);
