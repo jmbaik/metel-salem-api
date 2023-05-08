@@ -1,5 +1,6 @@
 package metel.salem.api;
 
+import io.swagger.models.HttpMethod;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
@@ -21,7 +22,14 @@ public class MetelSalemApiApplication {
 		return new WebMvcConfigurer() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/**");
+				registry.addMapping("/**")
+						.allowedMethods(
+								HttpMethod.GET.name(),
+								HttpMethod.HEAD.name(),
+								HttpMethod.POST.name(),
+								HttpMethod.PUT.name(),
+								HttpMethod.DELETE.name()
+						);
 			}
 		};
 	}
